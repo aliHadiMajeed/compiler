@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main(void) 
+{
+	char c;string x;
+	fstream aa;
+	aa.open("a.txt");
+while(aa.get(c))
+{	if(c=='/')//first char
+	{	x=x+c;
+		aa.get(c);//read next char from file a
+		x=x+c;
+		if(c=='/')while(aa.get(c))if(c=='\n'){cout<<x<<"\n";x="";break;}else x=x+c;
+		
+		else if(c=='*')
+		{
+			while(aa.get(c))
+			if(c=='*')
+				{	x=x+c;
+					aa.get(c);
+					x=x+c;
+					if(c=='/')
+						{cout<<x<<"\n";x="";break;}
+				}
+			else x=x+c;
+		}	
+		else {cout<<x<<"\n" ;x="";}
+	}
+}
+}
